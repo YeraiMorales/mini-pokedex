@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPokemonList } from '@/services/pokemon.service';
+import SearchBar from '@/components/SearchBar';
 
 export default async function HomePage({
   searchParams,
@@ -25,6 +26,9 @@ export default async function HomePage({
           Pokédex Full-Stack
         </h1>
         
+        {/* Barra de búsqueda */}
+        <SearchBar />
+
         {/* Cuadrícula responsive para el listado */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
           {data.results.map((pokemon: { name: string, url: string }) => (
