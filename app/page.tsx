@@ -29,7 +29,7 @@ export default async function HomePage({
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
           {data.results.map((pokemon: { name: string, url: string }) => (
             <Link 
-              href={`/pokemon/${pokemon.name}`} 
+              href={`/pokemon/${pokemon.name}?page=${currentPage}`} 
               key={pokemon.name}
               className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 text-center capitalize font-semibold text-gray-700 hover:shadow-md hover:border-blue-400 hover:text-blue-600 transition-all"
             >

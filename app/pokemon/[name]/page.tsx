@@ -4,13 +4,18 @@ import Link from 'next/link';
 
 export default async function PokemonDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ name: string }>;
+  searchParams: Promise<{ page?: string }>; 
 }) {
   const resolvedParams = await params;
   const { name } = resolvedParams;
   
-
+  
+  const resolvedSearchParams = await searchParams;
+  const returnPage = resolvedSearchParams?.page || '1'; // Si no hay, asumimos la 1
+  
   const pokemon: PokemonDetail = await getPokemonDetail(name);
 
   return (
@@ -18,7 +23,7 @@ export default async function PokemonDetailPage({
       <div className="max-w-md w-full bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
         
         <Link 
-          href="/" 
+          href={`/?page=${returnPage}`}
           className="text-blue-600 hover:text-blue-800 mb-6 inline-block font-semibold transition-colors"
         >
           &larr; Volver a la Pokédex
