@@ -1,3 +1,5 @@
+// instancia singleton de PrismaClient para evitar múltiples conexiones a la base de datos en entornos serverless o durante el desarrollo. En producción, se crea una nueva instancia cada vez, ya que el entorno suele manejar esto de manera diferente.
+
 import { PrismaClient } from '@/app/generated/prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 
