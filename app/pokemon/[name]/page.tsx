@@ -1,6 +1,7 @@
 import { getPokemonDetail } from '@/services/pokemon.service';
 import { PokemonDetail } from '@/interfaces/pokemon';
 import Link from 'next/link';
+import PokemonImage from '@/components/PokemonImage';
 
 export default async function PokemonDetailPage({
   params,
@@ -31,13 +32,11 @@ export default async function PokemonDetailPage({
 
         {/* Imagen y Nombre */}
         <div className="flex flex-col items-center">
-          <div className="relative w-48 h-48 bg-gray-50 rounded-full mb-4 flex justify-center items-center shadow-inner">
-             <img 
-              src={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default} 
-              alt={pokemon.name}
-              className="w-44 h-44 object-contain drop-shadow-lg transform hover:scale-110 transition-transform"
-            />
-          </div>
+          <PokemonImage 
+            name={pokemon.name}
+            normalUrl={pokemon.sprites.other['official-artwork'].front_default || pokemon.sprites.front_default}
+            shinyUrl={pokemon.sprites.other['official-artwork'].front_shiny || pokemon.sprites.front_default}
+          />
           <h1 className="text-4xl font-extrabold capitalize text-gray-800 mb-1 tracking-tight">
             {pokemon.name}
           </h1>
