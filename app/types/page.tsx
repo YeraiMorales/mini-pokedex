@@ -1,6 +1,10 @@
 import { getPokemonTypes } from '@/services/type.service';
 import type { Type } from '@/app/generated/prisma/client';
 
+// Forzamos que esta página se renderice siempre en el servidor (no se cachee ni se haga ISR)
+export const dynamic = 'force-dynamic';
+
+
 export default async function TypesPage() {
   // Llamamos a nuestro servicio. La primera vez tardará un poco más (hace fetch y guarda),
   // las siguientes veces será instantáneo porque leerá de Supabase.
