@@ -7,7 +7,7 @@ export default function SearchBar() {
   const [query, setQuery] = useState('');
   const router = useRouter();
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault(); // Evitamos que la página se recargue al enviar el formulario
     
     if (query.trim()) {
