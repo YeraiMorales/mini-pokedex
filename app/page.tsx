@@ -14,6 +14,19 @@ export default async function HomePage({
   // 2. Llamamos a nuestro servicio
   const data = await getPokemonList(currentPage);
   
+  // ESTADO VACÍO
+  if (!data.results || data.results.length === 0) {
+    return (
+      <main className="min-h-screen p-8 bg-gray-50 flex justify-center items-center text-center">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">No hay Pokémon aquí</h2>
+          <p className="text-gray-500">Intenta volver a la página 1.</p>
+          <Link href="/" className="text-blue-600 mt-4 inline-block font-bold">&larr; Volver al inicio</Link>
+        </div>
+      </main>
+    );
+  }
+  
   // 3. Calculamos si hay página siguiente o anterior
   const totalPages = Math.ceil(data.count / 20);
   const hasNextPage = currentPage < totalPages;
